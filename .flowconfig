@@ -1,0 +1,12 @@
+[ignore]
+./__tests__
+./coverage
+.*/node_modules/.*
+./dist
+
+[include]
+./src
+
+[libs]
+
+[options]

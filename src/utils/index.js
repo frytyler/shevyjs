@@ -1,8 +1,10 @@
-export const getFontValue = size => {
+// @flow
+
+export const getFontValue = (size: string): number => {
   return parseFloat(size)
 }
 
-export const getFontUnit = size => {
+export const getFontUnit = (size: string): string => {
   const match = size.match(/px|r?em$/)
 
   if (!match) {
@@ -12,11 +14,11 @@ export const getFontUnit = size => {
   return match[0]
 }
 
-export const trimArrayToMaxOf6 = array => {
+export const trimArrayToMaxOf6 = (array: Array<any>): Array<any> => {
   return array.length <= 6 ? array : array.slice(0, 6)
 }
 
-export function calcHeadingFontSize (thisArg, factor) {
+export function calcHeadingFontSize (thisArg: Object, factor: number): string {
   const { baseFontSize } = thisArg
   const value = getFontValue(baseFontSize)
   const unit = getFontUnit(baseFontSize)
@@ -24,7 +26,7 @@ export function calcHeadingFontSize (thisArg, factor) {
   return `${value * factor}${unit}`
 }
 
-export function calcHeadingLineHeight (thisArg, factor) {
+export function calcHeadingLineHeight (thisArg: Object, factor: number): number {
   const { lineHeightSpacing } = thisArg
   const fontSize = calcHeadingFontSize(thisArg, factor)
   const fontValue = getFontValue(fontSize)
@@ -47,10 +49,10 @@ export function calcHeadingLineHeight (thisArg, factor) {
 }
 
 export function calcHeadingMarginBottom (
-  thisArg,
-  factor,
-  addMarginBottom
-) {
+  thisArg: Object,
+  factor: number,
+  addMarginBottom: boolean
+): ?string {
   if (!addMarginBottom) {
     return undefined
   }
